@@ -1,14 +1,27 @@
 #!/usr/bin/env python3
 
-""" Opens and reads in all lines from the users text file. Returns as a list """
-def getUsers():
-    users = open("users.txt", 'r')
-    allUsers = []
-    while True:
-        user = users.readline()
-        allUsers.append(user.rstrip('\n'))
+""" Author: Aaron Baumgarner
+    Created: 12/9/20
+    Updated: 12/9/20
+    Notes: Opens a file and reads each line into a list. Able to save a new line to the file. Made as
+            generic as possible to be used for other projects. 
+"""
 
-        if not user:
-            users.close()
+""" Opens and reads in all lines from the users text file. Returns as a list """
+def getLines(fileName):
+    lines = open(fileName, 'r')
+    allLines = []
+    while True:
+        line = lines.readline()
+        allLines.append(line.rstrip('\n'))
+
+        if not line:
+            lines.close()
             break
-    return allUsers
+    return allLines
+
+""" Saves a new user to the users text file """
+def saveNewLine(user, fileName):
+    fout = open(fileName, "a")
+    fout.write(user +"\n")
+    fout.close()
