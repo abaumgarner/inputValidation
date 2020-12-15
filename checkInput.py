@@ -5,7 +5,6 @@
     Updated: 12/9/20
     Notes: Various checks on a user's input form
 """
-
 import re
 import fileIO
 
@@ -32,7 +31,19 @@ def checkPhoneNumber(phoneNumber):
 """ Checks menu option entered is in the menu """
 def checkOption(option):
     found = False
-    optionRegex = re.compile('[1-3]')
+    optionRegex = re.compile('[0-4]')
     if re.match(optionRegex, option):
         found = True
     return found
+
+def checkFile(fileName):
+    red = "\033[1;31;40m"
+    default = "\033[m"
+    fin = fileIO.getLines(fileName)
+    fileRegex = re.compile("[^\x00-\x21,\x23-\x26,\x28-\x7F]")
+
+    for line in fin:
+        if(fileRegex.search(line)):
+            loc = str(fin.index(line)+1)
+
+            print(red + "Line " + loc + ": " + default + line + " "+ "\n")

@@ -16,6 +16,8 @@ def displayMenu():
     print("1) Enter Username")
     print("2) Enter Phone Number")
     print("3) Add Username")
+    print("4) Check File")
+    print("0) Quit")
 
 """ Prompts the user for a menu option and verifies it is a valid option """
 def promptOption():
@@ -70,6 +72,16 @@ def promptNewUser():
     fileIO.saveNewLine(newUser, fileName)
     return newUser + " has been entered"
 
+""" Prompts the user for a file name """
+def promptFileName():
+    exist = False
+    while exist != True:
+        fileName = input("File Name: ")
+        exist = fileIO.checkFileExists(fileName)
+        if exist == False:
+            print("File " + fileName + " wasn't found. Please try again.\n")
+    checkInput.checkFile(fileName)
+
 """ Executes the menu option after it has been varified """
 def executeOption(option):
     if option == 1:
@@ -81,6 +93,10 @@ def executeOption(option):
     elif option == 3:
         newUser = promptNewUser()
         print(newUser)
+    elif option == 4:
+        promptFileName()
+    elif option == 0:
+        exit()
     else:
         print("Not sure how you got here..... o.O")
 
@@ -88,3 +104,5 @@ def executeOption(option):
 displayMenu()
 option = int(promptOption())
 executeOption(option)
+
+exit()

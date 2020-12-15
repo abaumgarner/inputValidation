@@ -6,6 +6,7 @@
     Notes: Opens a file and reads each line into a list. Able to save a new line to the file. Made as
             generic as possible to be used for other projects. 
 """
+import os.path
 
 """ Opens and reads in all lines from the users text file. Returns as a list """
 def getLines(fileName):
@@ -25,3 +26,7 @@ def saveNewLine(user, fileName):
     fout = open(fileName, "a")
     fout.write(user +"\n")
     fout.close()
+
+""" Checks if file given eists """
+def checkFileExists(fileName):
+    return os.path.isfile(fileName)

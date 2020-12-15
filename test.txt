@@ -1,0 +1,3 @@
+this is a test of the super cool file
+line 2 does " not have anything bad in it -- "
+line 4 does have something bad in it ! ***
